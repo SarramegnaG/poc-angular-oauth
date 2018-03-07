@@ -1,0 +1,35 @@
+<h2>My Users</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>
+        <a routerLink="/user/{{user.id}}">{{user.id}}</a>
+      </td>
+      <td>
+        {{user.username}}
+      </td>
+      <td>
+        <button class="delete" title="Delete user" (click)="delete(user)">x</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <label>User username:
+    <input #userUsername />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(userUsername.value); userUsername.value=''">
+    add
+  </button>
+</div>
